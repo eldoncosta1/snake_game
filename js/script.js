@@ -12,14 +12,23 @@ let food = {
   x: Math.floor(Math.random() * 15 + 1) * box,
   y: Math.floor(Math.random() * 15 + 1) * box
 }
+let score = 0;
 let border = false;
 let fim = false;
 
 let btnBorder = document.getElementById('btnBorder');
+let bntScore = document.getElementById('btnScore');
 
 let spanBorder = document.getElementById('spanBorder');
+let spanCore = document.getElementById('spanCore');
 
 let gameover = document.getElementById('gameover');
+
+bntScore.onclick = function() {
+  if (fim) {
+    window.location.reload();
+  }
+}
 
 btnBorder.onclick = function() {
   if (!border) {
@@ -111,6 +120,9 @@ function iniciarJogo() {
     // caso contrário, não remove o item do array (aumenta de tamanho e a modia muda para outra posição aleatória)
     food.x = Math.floor(Math.random() * 15 + 1) * box;
     food.y = Math.floor(Math.random() * 15 + 1) * box;
+
+    score++;
+    spanScore.innerHTML = score;
   }
 
   let newHead = {
