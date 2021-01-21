@@ -10,4 +10,6 @@ A partir da aula básica, adicionei o estilo visual ao jogo criado por https://g
 
 O jogo agora conta pontuação a cada "maçã comida" pela cobra. Também é possível aumentar a velocidade do jogo e adicionar ou remover uma borda, onde a cobra não possa atravessar para o outro lado, deixando o jogo mais difícil.
 
-[![](https://i.imgur.com/k0UJGrH.png)](https://i.imgur.com/k0UJGrH.png)
+### Demo
+
+![](https://i.imgur.com/jeT0lWO.gif)
