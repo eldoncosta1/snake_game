@@ -13,10 +13,13 @@ let food = {
   y: Math.floor(Math.random() * 15 + 1) * box
 }
 let border = false;
+let fim = false;
 
 let btnBorder = document.getElementById('btnBorder');
 
 let spanBorder = document.getElementById('spanBorder');
+
+let gameover = document.getElementById('gameover');
 
 btnBorder.onclick = function() {
   if (!border) {
@@ -61,18 +64,24 @@ function update(event) {
 }
 
 function iniciarJogo() {  
-  // Ao chegar no fim do canvas, aparece do outro lado (corrigindo bug que deixava a cobra passeando fora do canva)
-  if (snake[0].x > 15 * box && direction != "left") snake[0].x = 0;
-  if (snake[0].x < 0 && direction != "right") snake[0].x = 15 * box;
-  if (snake[0].y > 15 * box && direction != "up") snake[0].y = 0;
-  if (snake[0].y < 0 && direction != "down") snake[0].y = 15 * box;
+
+  if (!border) {
+    // Ao chegar no fim do canvas, aparece do outro lado (corrigindo bug que deixava a cobra passeando fora do canva)
+    if (snake[0].x > 15 * box && direction != "left") snake[0].x = 0;
+    if (snake[0].x < 0 && direction != "right") snake[0].x = 15 * box;
+    if (snake[0].y > 15 * box && direction != "up") snake[0].y = 0;
+    if (snake[0].y < 0 && direction != "down") snake[0].y = 15 * box;
+  } else {
+    // Se a posição 0 (cabeça) se chocar com a borda, para o jogo
+    if (snake[0].x > 15 * box) gameOver();
+    if (snake[0].x < 0) gameOver();
+    if (snake[0].y > 15 * box) gameOver();
+    if (snake[0].y < 0) gameOver();
+  }
 
   // se a posição 0 (cabeça) se chocar com o corpo, ela para o jogo
   for (let i = 1; i < snake.length; i++) {
-    if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
-      clearInterval(jogo);
-      alert('Game Over :(');
-    }
+    if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) gameOver();
   }
 
   criarBG();
@@ -109,6 +118,13 @@ function iniciarJogo() {
 
   snake.unshift(newHead);
 
+}
+
+function gameOver() {
+  clearInterval(jogo);
+  fim = true;
+  gameover.style.display = "flex";
+  
 }
 
 let jogo = setInterval(iniciarJogo, 100);

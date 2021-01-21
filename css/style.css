@@ -107,3 +107,33 @@ aside button:active {
 canvas.border {
   border: 2px solid green;
 }
+
+.blink {
+  animation: blinking 1s infinite;
+}
+
+@keyframes blinking {
+  0% {opacity: 0;}
+  50% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+#gameover {
+  font-family: 'VT323', monospace;
+  font-size: 2em;
+  color: black;
+  width: 250px;
+  height: 80px;
+  position: absolute;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px solid black;
+  background-color: lightgreen;
+  box-shadow: 1px 1px lightgreen, 6px 6px black;;
+}
+
+#gameover span {
+  font-size: .5em;
+}
