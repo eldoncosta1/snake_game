@@ -163,8 +163,8 @@ function iniciarJogo() {
 }
 
 function gameOver() {
-  clearInterval(jogo);
-  fim = true;
+  clearInterval(jogo); // faz o movimento parar
+  fim = true; // define que o jogo acabou (para não funcionarem os outros botões)
   gameover.style.display = "flex";
   
 }
