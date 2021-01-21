@@ -13,14 +13,18 @@ let food = {
   y: Math.floor(Math.random() * 15 + 1) * box
 }
 let score = 0;
+let level = 1;
+let vel = 150;
 let border = false;
 let fim = false;
 
 let btnBorder = document.getElementById('btnBorder');
 let bntScore = document.getElementById('btnScore');
+let btnLevel = document.getElementById('btnLevel');
 
 let spanBorder = document.getElementById('spanBorder');
 let spanCore = document.getElementById('spanCore');
+let spanLevel = document.getElementById('spanLevel');
 
 let gameover = document.getElementById('gameover');
 
@@ -42,6 +46,28 @@ btnBorder.onclick = function() {
   }
 }
 
+btnLevel.onclick = function() {
+  if (!fim) {
+    if (level < 10) {
+      level++;
+      vel = vel - 12;
+    } else if (level == 10) {
+      level = 1;
+      vel = 150;
+    }
+
+    if (level != 10) {
+      spanLevel.innerHTML = level;
+    } else {
+      spanLevel.innerHTML = level+"!";
+    }
+
+    clearInterval(jogo);
+    jogo = setInterval(iniciarJogo, vel);
+
+  }
+}
+
 function criarBG() {
   context.fillStyle = "lightgreen";
   /*
@@ -54,6 +80,8 @@ function criarCobrinha() {
   for (let i = 0; i < snake.length; i++) {
     context.fillStyle = "green";
     context.fillRect(snake[i].x, snake[i].y, box, box);
+    context.strokeStyle = 'lightgreen';
+    context.strokeRect(snake[i].x, snake[i].y, box, box);
   }
 }
 
@@ -141,4 +169,4 @@ function gameOver() {
   
 }
 
-let jogo = setInterval(iniciarJogo, 100);
+let jogo = setInterval(iniciarJogo, vel);
