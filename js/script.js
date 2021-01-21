@@ -7,7 +7,7 @@ snake[0] = {
   x: 8 * box,
   y: 8 * box
 }
-let direction = "right";
+let direction; // jogo inicia parado, só começa a movimentar quando o jogado pressiona uma seta de direção
 let food = {
   x: Math.floor(Math.random() * 15 + 1) * box,
   y: Math.floor(Math.random() * 15 + 1) * box
