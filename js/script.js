@@ -1,6 +1,6 @@
 let canvas = document.getElementById("snake");
 let context = canvas.getContext("2d");
-let box = 32;
+let box = 30;
 let snake = [];
 // cobrinha criada no centro do canvas com tamanho definido no index.html
 snake[0] = {
@@ -11,6 +11,23 @@ let direction = "right";
 let food = {
   x: Math.floor(Math.random() * 15 + 1) * box,
   y: Math.floor(Math.random() * 15 + 1) * box
+}
+let border = false;
+
+let btnBorder = document.getElementById('btnBorder');
+
+let spanBorder = document.getElementById('spanBorder');
+
+btnBorder.onclick = function() {
+  if (!border) {
+    border = true;
+    canvas.classList.add('border');
+    spanBorder.innerHTML = 'Yes';
+  } else {
+    border = false;
+    canvas.classList.remove('border');
+    spanBorder.innerHTML = 'No';
+  }
 }
 
 function criarBG() {

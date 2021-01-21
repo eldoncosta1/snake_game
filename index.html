@@ -13,18 +13,30 @@
   <div id="content">
     <aside>
       <h1>SNAKE GAME!</h1>
-      <div id="score">
-        Score: <span>0</span>
+      
+      <div>
+        <div id="score">
+          Score: <span>0</span>
+        </div>
+        <button id="btnScore"></button>
       </div>
-      <div id="level">
-        Level: <span>0</span>
+
+      <div>
+        <div id="level">
+          Level: <span>0</span>
+        </div>
+        <button id="btnLevel"></button>
       </div>
-      <div id="boderGame">
-        Border: <span>No</span>
+
+      <div>
+        <div id="boderGame">
+          Border: <span id="spanBorder">No</span>
+        </div>
+        <button id="btnBorder"></button>
       </div>
     </aside>
     <div id="jogo">
-      <canvas id="snake" width="512" height="512"></canvas>
+      <canvas id="snake" width="480" height="480"></canvas>
     </div>
   </div>
 </body>
